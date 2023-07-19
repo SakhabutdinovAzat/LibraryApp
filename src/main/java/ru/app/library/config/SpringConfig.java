@@ -1,4 +1,4 @@
-package ru.test.library.config;
+package ru.app.library.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -10,27 +10,25 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.resource.PathResourceResolver;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
 import javax.sql.DataSource;
+import java.util.Objects;
 
 @Configuration
-@ComponentScan("ru.test.library")
+@ComponentScan("ru.app.library")
 @EnableWebMvc
 @PropertySource("classpath:database.properties")
 public class SpringConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
     private Environment environment;
-
-    private final String DRIVER = "driver";
-    private final String URL = "url";
-    private final String USERNAME = "username";
-    private final String PASSWORD = "password";
 
     @Autowired
     public SpringConfig(ApplicationContext applicationContext, Environment environment) {
@@ -64,17 +62,27 @@ public class SpringConfig implements WebMvcConfigurer {
         registry.viewResolver(resolver);
     }
 
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry
+                .addResourceHandler("/resources/**")
+                .addResourceLocations("/resources/","/other-resources/")
+                .setCachePeriod(3600)
+                .resourceChain(true)
+                .addResolver(new PathResourceResolver());
+    }
+
     @Bean
     public DataSource dataSource() {
-/*        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(Objects.requireNonNull(environment.getProperty(DRIVER)));
-        dataSource.setUrl(environment.getProperty(URL));
-        dataSource.setUsername(environment.getProperty(USERNAME));
-        dataSource.setPassword(environment.getProperty(PASSWORD));*/
+//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//        dataSource.setDriverClassName(Objects.requireNonNull(environment.getProperty("driver")));
+//        dataSource.setUrl(environment.getProperty("url"));
+//        dataSource.setUsername(environment.getProperty("username"));
+//        dataSource.setPassword(environment.getProperty("password"));
 
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/myfirst_db");
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/library_app_db");
         dataSource.setUsername("postgres");
         dataSource.setPassword("Azat");
 

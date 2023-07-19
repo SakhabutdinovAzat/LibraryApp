@@ -1,19 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>People</title>
+    <link rel="stylesheet" type="text/css" href="../../../../resources/static/css/style.css">
 </head>
 <body>
-<div th:each="person : ${people}">
-    <a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getFullName() + ',  ' + person.getAge()}">user</a>
+<div class="header">Header</div>
+<div class="asideL">AsideL</div>
+<div class="main">
+    <div th:each="person : ${people}">
+        <a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getFullName() + ',  ' + person.getAge()}">user</a>
+    </div>
+    <br/>
+    <hr/>
+    <a href="people/new"> Add new person</a>
+    <br/>
+    <a href="/books">Books</a>
 </div>
 
-<br/>
-<hr/>
+<div class="asideR">AsideR</div>
+<div class="footer">Footer</div>
 
-<a href="people/new"> Add new person</a>
-<br/>
-<a href="/books">Books</a>
 </body>
 </html>

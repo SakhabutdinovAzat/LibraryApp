@@ -1,4 +1,4 @@
-package ru.test.library.model;
+package ru.app.library.model;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;

@@ -1,13 +1,13 @@
-package ru.test.library.controller;
+package ru.app.library.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ru.test.library.DAO.PersonDAO;
-import ru.test.library.model.Person;
-import ru.test.library.util.PersonValidator;
+import ru.app.library.model.Person;
+import ru.app.library.util.PersonValidator;
+import ru.app.library.DAO.PersonDAO;
 
 import javax.validation.Valid;
 

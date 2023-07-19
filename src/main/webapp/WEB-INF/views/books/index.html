@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Books</title>
+    <link rel="stylesheet" type="text/css" href="../../../../resources/static/css/style.css">
 </head>
 <body>
+<div class="header">Header</div>
+<div class="asideL">AsideL</div>
+<div class="main">
+
 <div th:each="book : ${books}">
     <a th:href="@{/books/{id}(id=${book.getId()})}" th:text="${book.getTitle()} + ', '+ ${book.getAuthor()} + ', ' +  ${book.getYear()}"></a>
 </div>
@@ -14,6 +19,9 @@
 <a href="books/new"> Add new book</a>
 <br>
 <a href="/people">People</a>
+</div>
 
+<div class="asideR">AsideR</div>
+<div class="footer">Footer</div>
 </body>
 </html>

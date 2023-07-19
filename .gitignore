@@ -1,3 +1,6 @@
+src/main/other-resources/database.properties
+src/main/other-resources/DB_SQL
+
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar

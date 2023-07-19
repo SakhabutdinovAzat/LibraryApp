@@ -1,10 +1,10 @@
-package ru.test.library.util;
+package ru.app.library.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import ru.test.library.DAO.BookDAO;
-import ru.test.library.model.Book;
+import ru.app.library.DAO.BookDAO;
+import ru.app.library.model.Book;
 
 public class BookValidator implements Validator {
 

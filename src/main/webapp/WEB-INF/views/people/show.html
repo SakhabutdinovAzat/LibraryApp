@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Person</title>
+    <title>People</title>
+    <link rel="stylesheet" type="text/css" href="../../../../resources/static/css/style.css">
 </head>
 <body>
+<div class="header">Header</div>
+<div class="asideL">AsideL</div>
+<div class="main">
 <p th:text="'Full name: ' + ${person.getFullName()}">Name and Age</p>
 <p th:text="'Age: ' + ${person.getAge()}">Name and Age</p>
 <p th:text="'Email: ' + ${person.getEmail()}">Email and Address</p>
@@ -31,5 +36,10 @@
 <form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
     <input type="submit" value="Delete person"/>
 </form>
+</div>
+
+<div class="asideR">AsideR</div>
+<div class="footer">Footer</div>
+
 </body>
 </html>

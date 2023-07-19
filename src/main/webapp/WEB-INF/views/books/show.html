@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Show book</title>
+    <link rel="stylesheet" type="text/css" href="../../../../resources/static/css/style.css">
 </head>
 <body>
+<div class="header">Header</div>
+<div class="asideL">AsideL</div>
+<div class="main">
+
 <p th:text="'Book: ' + ${book.getTitle()} + '. ' + ${book.getAuthor()} + '. ' + ${book.getYear()}"></p>
 <br/>
 <p th:text="'About book: ' + ${book.getTitle()}"></p>
@@ -36,6 +41,10 @@
 <form th:method="DELETE" th:action="@{/books/{id}(id=${book.getId()})}">
     <input type="submit" value="Delete book">
 </form>
+</div>
+
+<div class="asideR">AsideR</div>
+<div class="footer">Footer</div>
 
 </body>
 </html>

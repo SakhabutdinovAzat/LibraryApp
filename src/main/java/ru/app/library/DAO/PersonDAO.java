@@ -1,12 +1,10 @@
-package ru.test.library.DAO;
+package ru.app.library.DAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BatchPreparedStatementSetter;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
-import ru.test.library.model.Book;
-import ru.test.library.model.Person;
+import ru.app.library.model.Book;
+import ru.app.library.model.Person;
 
 import java.util.List;
 import java.util.Optional;
@@ -47,7 +45,7 @@ public class PersonDAO {
     }
 
     public Person show(int id) {
-        return jdbcTemplate.query("SELECT * FROM Person WHERE person_id=?", new Object[]{id},
+        return jdbcTemplate.query("SELECT * FROM Person WHERE id=?", new Object[]{id},
                 new PersonMapper()).stream().findAny().orElse(null);
     }
 
@@ -57,12 +55,12 @@ public class PersonDAO {
     }
 
     public void update(int id, Person personUpdate){
-        jdbcTemplate.update("UPDATE person SET full_name=?, age=?, email=?, address=? WHERE person_id=?",
+        jdbcTemplate.update("UPDATE person SET full_name=?, age=?, email=?, address=? WHERE id=?",
                 personUpdate.getFullName(), personUpdate.getAge(), personUpdate.getEmail(), personUpdate.getAddress(), id);
     }
 
     public void delete(int id) {
-        jdbcTemplate.update("DELETE FROM person WHERE person_id=?", id);
+        jdbcTemplate.update("DELETE FROM person WHERE id=?", id);
     }
 
     public Optional<Person> getPersonByFullName(String fullName) {
